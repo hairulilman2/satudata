@@ -188,7 +188,7 @@ img{max-width:100%;display:block;}
 /* HERO DATASET */
 .dataset-hero{
   position:relative;overflow:hidden;
-  margin:22px auto 0;max-width:1240px;
+  margin:22px auto 0;width:calc(100% - 48px);max-width:1192px;
   border-radius:20px;
   background:linear-gradient(120deg,#eaf2ff 0%,#dbe9ff 55%,#cfe1ff 100%);
   border:1px solid #d7e6ff;
@@ -196,24 +196,42 @@ img{max-width:100%;display:block;}
 .hero-inner{
   position:relative;z-index:2;
   display:flex;align-items:center;gap:32px;
-  padding:38px 40px;min-height:190px;
+  padding:38px 40px;min-height:304px;
 }
 .hero-text{max-width:480px;}
 .hero-text h1{
   margin:0 0 10px;font-size:30px;font-weight:700;color:var(--blue-800);
 }
 .hero-text h1 b{font-weight:800;}
-.hero-text p{margin:0;color:var(--ink-700);font-size:14.5px;line-height:1.6;}
+.hero-text p{margin:0;color:var(--ink-700);font-size:16.5px;line-height:1.6;}
 .hero-photo{
-  position:absolute;right:0;top:0;bottom:0;width:46%;
-  clip-path:polygon(18% 0,100% 0,100% 100%,0% 100%);
-  overflow:hidden;
+  position:absolute;right:0;top:0;bottom:0;width:46%;z-index:1;
 }
-.hero-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);}
-.hero-photo::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg,#cfe1ff 0%,rgba(207,225,255,0) 30%);
+.hero-photo img{width:100%;height:100%;object-fit:cover;}
+.hero-fade{
+  position:absolute;left:0;top:0;width:160px;height:100%;
+  background:linear-gradient(90deg,#dbe9ff 35%,rgba(219,233,255,0) 100%);
 }
+.hero-stripe{position:absolute;top:0;height:100%;}
+.hero-stripe.dark{
+  left:32px;width:112px;z-index:0;
+  background:rgba(21,93,252,.8);
+  clip-path:polygon(60% 0,100% 0,40% 100%,0 100%);
+}
+.hero-stripe.light{
+  left:-24px;width:144px;z-index:10;
+  background:rgba(84,162,255,.4);
+  clip-path:polygon(48% 0,100% 0,52% 100%,0 100%);
+}
+.hero-corner{
+  position:absolute;right:0;bottom:0;z-index:10;
+  background:rgba(48,128,255,.4);
+  clip-path:polygon(100% 0,100% 100%,0 100%);
+}
+.hero-corner.c1{width:72px;height:72px;}
+.hero-corner.c2{width:112px;height:112px;}
+.hero-corner.c3{width:152px;height:152px;}
+
 .hero-shape{
   position:absolute;border-radius:50%;opacity:.35;filter:blur(2px);
   animation:float-y 7s ease-in-out infinite;
@@ -226,7 +244,7 @@ img{max-width:100%;display:block;}
 /* DATASET CONTENT */
 .dataset-content{
   max-width:1240px;
-  margin:48px auto;
+  margin:37px auto;
   padding:0 24px;
 }
 
@@ -613,8 +631,14 @@ img{max-width:100%;display:block;}
       <p>Akses data pemerintah menjadi lebih mudah. Cari informasi spesifik, filter berdasarkan topik yang relevan, dan unduh dataset terverifikasi.</p>
     </div>
   </div>
-  <div class="hero-photo">
+    <div class="hero-photo">
     <img src="{{ asset('image/kantor gubernur.jpeg') }}" alt="Kantor Gubernur Sulawesi Tengah">
+    <div class="hero-fade"></div>
+    <div class="hero-stripe dark"></div>
+    <div class="hero-stripe light"></div>
+    <div class="hero-corner c1"></div>
+    <div class="hero-corner c2"></div>
+    <div class="hero-corner c3"></div>
   </div>
 </section>
 

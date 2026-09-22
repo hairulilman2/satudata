@@ -192,8 +192,8 @@ img{max-width:100%;display:block;}
 /* HERO: memakai Tailwind (lihat <style id="hero-tailwind"> di bawah) */
 
 /* STATS */
-.db-band{padding:36px 0;}
-.db-band-blue{background:linear-gradient(180deg,#eef3ff,#f6f9ff);}
+.db-band{padding:35px 0;}
+.db-band-blue{background:transparent;}
 
 .db-kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .db-kpi-card{
@@ -227,7 +227,7 @@ img{max-width:100%;display:block;}
 /* STATS CHARTS */
 .db-stats-head{
   display:flex;align-items:center;justify-content:space-between;
-  margin:36px 0 14px;gap:10px;flex-wrap:wrap;
+  margin:0 0 14px;gap:10px;flex-wrap:wrap;
 }
 .db-stats-head h2{
   font-size:15px;margin:0;color:#101828;
@@ -250,11 +250,6 @@ img{max-width:100%;display:block;}
   background:#fff;border:1px solid var(--ink-100,#e7eaf1);
   border-radius:14px;padding:20px 22px;
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);
-}
-.db-stat-chart:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(20,71,201,.14),0 2px 6px rgba(16,24,40,.06);
-  border-color:#7ea2ff;
 }
 .db-stat-chart .lbl{
   font-size:12px;color:var(--ink-500,#5b6478);
@@ -294,13 +289,13 @@ img{max-width:100%;display:block;}
 .db-stat-chart-big .yaxis-lbl span:nth-child(4){top:141px;}
 .db-stat-chart-big .yaxis-lbl span:nth-child(5){top:174px;}
 .db-stat-chart-big svg{
-  flex:1;width:100%;height:180px;display:block;overflow:visible;
+  flex:1;min-width:0;width:100%;height:180px;display:block;overflow:visible;
 }
 .db-stat-chart .xaxis-big{
-  display:flex;justify-content:space-between;margin-top:4px;padding-left:38px;
+  display:grid;grid-template-columns:repeat(12,1fr);margin-top:4px;padding-left:38px;
 }
 .db-stat-chart .xaxis-big span{
-  font-size:10.5px;color:var(--ink-500,#8891a3);
+  font-size:10.5px;color:var(--ink-500,#8891a3);text-align:center;
 }
 
 @media (max-width:900px){
@@ -312,7 +307,7 @@ img{max-width:100%;display:block;}
   display:grid;
   grid-template-columns:1.5fr 1fr;
   gap:18px;
-  align-items:start;
+  align-items:stretchrt;
 }
 
 .db-panel{
@@ -578,6 +573,8 @@ img{max-width:100%;display:block;}
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
+  flex:1;                 
+  align-content:stretch;
 }
 
 .db-mini-card{
@@ -589,12 +586,6 @@ img{max-width:100%;display:block;}
   flex-direction:column;
   gap:6px;
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);
-}
-
-.db-mini-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(20,71,201,.14);
-  border-color:#7ea2ff;
 }
 
 .db-mini-card .mini-top{
@@ -718,6 +709,41 @@ img{max-width:100%;display:block;}
 
 .db-donut-legend b{color:#101828;}
 
+/* STANDAR & KUALITAS DATA */
+.db-standard-band{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  background:#fff;
+  border:1px solid var(--ink-100,#e7eaf1);
+  border-radius:14px;
+  overflow:hidden;
+}
+.db-standard-item{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:20px 24px;
+  border-right:1px solid var(--ink-100,#e7eaf1);
+}
+.db-standard-item:last-child{border-right:none;}
+.db-standard-icon{
+  width:36px;height:36px;flex-shrink:0;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+}
+.db-standard-item h4{
+  margin:0 0 4px;font-size:14px;font-weight:700;color:#1c5cf0;
+}
+.db-standard-item p{
+  margin:0;font-size:12.5px;line-height:1.5;color:var(--ink-500,#5b6478);
+}
+
+@media (max-width:900px){
+  .db-standard-band{grid-template-columns:1fr;}
+  .db-standard-item{border-right:none;border-bottom:1px solid var(--ink-100,#e7eaf1);}
+  .db-standard-item:last-child{border-bottom:none;}
+}
+
 @media (max-width:1080px){
   .db-main-grid{grid-template-columns:1fr;}
   .db-side-grid{grid-template-columns:1fr;}
@@ -750,7 +776,7 @@ img{max-width:100%;display:block;}
   background:linear-gradient(135deg,#0a2472 0%,#1447c9 100%);
   color:#fff;
   padding:60px 0 0;
-  margin-top:80px;
+  margin-top:48px;
 }
 
 .footer-grid{
@@ -1080,20 +1106,20 @@ img{max-width:100%;display:block;}
             <line x1="0" y1="96" x2="520" y2="96" stroke="#eef1f6" stroke-width="1"/>
             <line x1="0" y1="141" x2="520" y2="141" stroke="#eef1f6" stroke-width="1"/>
             <line x1="0" y1="174" x2="520" y2="174" stroke="#eef1f6" stroke-width="1"/>
-            <path d="M6,174 L52,174 L98,174 L144,174 L190,174 L236,174 L282,174 L328,174 L374,174 L420,174 L466,174 L514,174" fill="none" stroke="#e88a1c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6,174 L52,174 L98,174 L144,174 L190,174 L236,174 L282,174 L328,174 L374,174 L420,174 L466,174 L514,174 L514,174 L6,174 Z" fill="#e88a1c" opacity=".1"/>
-            <circle cx="6" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="52" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="98" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="144" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="190" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="236" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="282" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="328" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="374" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="420" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="466" cy="174" r="4" fill="#e88a1c"/>
-            <circle cx="514" cy="174" r="4" fill="#e88a1c"/>
+            <path d="M21.67,174 L65,174 L108.33,174 L151.67,174 L195,174 L238.33,174 L281.67,174 L325,174 L368.33,174 L411.67,174 L455,174 L498.33,174" fill="none" stroke="#e88a1c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.67,174 L65,174 L108.33,174 L151.67,174 L195,174 L238.33,174 L281.67,174 L325,174 L368.33,174 L411.67,174 L455,174 L498.33,174 L498.33,174 L21.67,174 Z" fill="#e88a1c" opacity=".1"/>
+            <circle cx="21.67" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="65" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="108.33" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="151.67" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="195" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="238.33" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="281.67" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="325" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="368.33" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="411.67" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="455" cy="174" r="4" fill="#e88a1c"/>
+            <circle cx="498.33" cy="174" r="4" fill="#e88a1c"/>
           </svg>
         </div>
         <div class="xaxis-big">
@@ -1133,20 +1159,20 @@ img{max-width:100%;display:block;}
             <line x1="0" y1="96" x2="520" y2="96" stroke="#eef1f6" stroke-width="1"/>
             <line x1="0" y1="141" x2="520" y2="141" stroke="#eef1f6" stroke-width="1"/>
             <line x1="0" y1="174" x2="520" y2="174" stroke="#eef1f6" stroke-width="1"/>
-            <path d="M6,174 L52,174 L98,174 L144,174 L190,174 L236,174 L282,174 L328,174 L374,174 L420,174 L466,174 L514,174" fill="none" stroke="#e02424" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6,174 L52,174 L98,174 L144,174 L190,174 L236,174 L282,174 L328,174 L374,174 L420,174 L466,174 L514,174 L514,174 L6,174 Z" fill="#e02424" opacity=".1"/>
-            <circle cx="6" cy="174" r="4" fill="#e02424"/>
-            <circle cx="52" cy="174" r="4" fill="#e02424"/>
-            <circle cx="98" cy="174" r="4" fill="#e02424"/>
-            <circle cx="144" cy="174" r="4" fill="#e02424"/>
-            <circle cx="190" cy="174" r="4" fill="#e02424"/>
-            <circle cx="236" cy="174" r="4" fill="#e02424"/>
-            <circle cx="282" cy="174" r="4" fill="#e02424"/>
-            <circle cx="328" cy="174" r="4" fill="#e02424"/>
-            <circle cx="374" cy="174" r="4" fill="#e02424"/>
-            <circle cx="420" cy="174" r="4" fill="#e02424"/>
-            <circle cx="466" cy="174" r="4" fill="#e02424"/>
-            <circle cx="514" cy="174" r="4" fill="#e02424"/>
+            <path d="M21.67,174 L65,174 L108.33,174 L151.67,174 L195,174 L238.33,174 L281.67,174 L325,174 L368.33,174 L411.67,174 L455,174 L498.33,174" fill="none" stroke="#e02424" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.67,174 L65,174 L108.33,174 L151.67,174 L195,174 L238.33,174 L281.67,174 L325,174 L368.33,174 L411.67,174 L455,174 L498.33,174 L498.33,174 L21.67,174 Z" fill="#e02424" opacity=".1"/>
+            <circle cx="21.67" cy="174" r="4" fill="#e02424"/>
+            <circle cx="65" cy="174" r="4" fill="#e02424"/>
+            <circle cx="108.33" cy="174" r="4" fill="#e02424"/>
+            <circle cx="151.67" cy="174" r="4" fill="#e02424"/>
+            <circle cx="195" cy="174" r="4" fill="#e02424"/>
+            <circle cx="238.33" cy="174" r="4" fill="#e02424"/>
+            <circle cx="281.67" cy="174" r="4" fill="#e02424"/>
+            <circle cx="325" cy="174" r="4" fill="#e02424"/>
+            <circle cx="368.33" cy="174" r="4" fill="#e02424"/>
+            <circle cx="411.67" cy="174" r="4" fill="#e02424"/>
+            <circle cx="455" cy="174" r="4" fill="#e02424"/>
+            <circle cx="498.33" cy="174" r="4" fill="#e02424"/>
           </svg>
         </div>
         <div class="xaxis-big">
@@ -1169,7 +1195,7 @@ img{max-width:100%;display:block;}
 </div>
 
 {{-- MAIN CONTENT SECTION --}}
-<div class="wrap" style="margin-top:36px;">
+<div class="wrap" style="margin-top:0;">
   <div class="db-main-grid">
     
     {{-- PETA INTERAKTIF --}}
@@ -1324,8 +1350,42 @@ img{max-width:100%;display:block;}
 
   </div>
 </div>
+{{-- STANDAR & KUALITAS DATA --}}
+<div class="wrap" style="margin-top:37px;">
+  <div class="db-standard-band">
+    <div class="db-standard-item">
+      <div class="db-standard-icon" style="background:#e8f0fe;color:#1c5cf0;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <h4>Standar Data</h4>
+        <p>Mengacu pada prinsip Satu Data Indonesia untuk keterpaduan data</p>
+      </div>
+    </div>
 
+    <div class="db-standard-item">
+      <div class="db-standard-icon" style="background:#e4f7ea;color:#1a9a52;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div>
+        <h4>Metadata Baku</h4>
+        <p>Setiap dataset dilengkapi metadata terstandarisasi untuk transparansi</p>
+      </div>
+    </div>
+
+    <div class="db-standard-item">
+      <div class="db-standard-icon" style="background:#fff2e0;color:#e88a1c;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h4>Interoperabilitas</h4>
+        <p>Format terbuka mendukung pertukaran data antar sistem pemerintah</p>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
 
 <script>
 // Theme toggle

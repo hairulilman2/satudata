@@ -190,7 +190,7 @@ img{max-width:100%;display:block;}
   position:relative;
   overflow:hidden;
   margin:22px auto 0;
-  max-width:1240px;
+  width:calc(100% - 48px);max-width:1192px;
   border-radius:20px;
   background:linear-gradient(120deg,#e0f0ff 0%,#d0e6ff 55%,#c0dcff 100%);
   border:1px solid #c7dcf7;
@@ -252,23 +252,58 @@ img{max-width:100%;display:block;}
   top:0;
   bottom:0;
   width:48%;
-  clip-path:polygon(20% 0,100% 0,100% 100%,0% 100%);
-  overflow:hidden;
+  z-index:1;
 }
 
 .hero-photo img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transform:scale(1.02);
 }
 
-.hero-photo::after{
-  content:"";
+.hero-fade{
   position:absolute;
-  inset:0;
-  background:linear-gradient(100deg,#c0dcff 0%,rgba(192,220,255,0) 30%);
+  left:0;
+  top:0;
+  width:160px;
+  height:100%;
+  background:linear-gradient(90deg,#d0e6ff 35%,rgba(208,230,255,0) 100%);
 }
+
+.hero-stripe{
+  position:absolute;
+  top:0;
+  height:100%;
+}
+
+.hero-stripe.dark{
+  left:32px;
+  width:112px;
+  z-index:0;
+  background:rgba(21,93,252,.8);
+  clip-path:polygon(60% 0,100% 0,40% 100%,0 100%);
+}
+
+.hero-stripe.light{
+  left:-24px;
+  width:144px;
+  z-index:10;
+  background:rgba(84,162,255,.4);
+  clip-path:polygon(48% 0,100% 0,52% 100%,0 100%);
+}
+
+.hero-corner{
+  position:absolute;
+  right:0;
+  bottom:0;
+  z-index:10;
+  background:rgba(48,128,255,.4);
+  clip-path:polygon(100% 0,100% 100%,0 100%);
+}
+
+.hero-corner.c1{width:72px;height:72px;}
+.hero-corner.c2{width:112px;height:112px;}
+.hero-corner.c3{width:152px;height:152px;}
 
 .hero-shape{
   position:absolute;
@@ -313,7 +348,7 @@ img{max-width:100%;display:block;}
 /* ORGANISASI CONTENT */
 .organisasi-content{
   max-width:1240px;
-  margin:48px auto;
+  margin:37px auto;
   padding:0 24px;
 }
 
@@ -814,8 +849,14 @@ img{max-width:100%;display:block;}
       <p>Produsen Data adalah unit pada instansi pusat maupun instansi daerah yang menghasilkan data berdasarkan kewenangan sesuai dengan ketentuan peraturan perundang-undangan.</p>
     </div>
   </div>
-  <div class="hero-photo">
+    <div class="hero-photo">
     <img src="{{ asset('image/kantor gubernur.jpeg') }}" alt="Kantor Pemerintah Sulawesi Tengah">
+    <div class="hero-fade"></div>
+    <div class="hero-stripe dark"></div>
+    <div class="hero-stripe light"></div>
+    <div class="hero-corner c1"></div>
+    <div class="hero-corner c2"></div>
+    <div class="hero-corner c3"></div>
   </div>
 </section>
 

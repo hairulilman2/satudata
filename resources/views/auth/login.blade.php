@@ -25,7 +25,7 @@ body{
   overflow:hidden;
 }
 
-/* overlay gelap tipis supaya teks terbaca */
+
 body::before{
   content:"";
   position:fixed;inset:0;
@@ -33,18 +33,82 @@ body::before{
   z-index:0;pointer-events:none;
 }
 
-/* ── WAVE BAWAH ── */
-.wave-container{
-  position:fixed;left:0;bottom:-5px;
-  width:100%;height:200px;z-index:1;pointer-events:none;
-  overflow:hidden;
-  transform:rotate(180deg);
-}
-.wave{position:absolute;left:-5%;width:110%;border-radius:50% 50% 0 0;}
-.wave-1{bottom:-100px;height:200px;background:#1e5cf0;transform:rotate(-2deg);}
-.wave-2{bottom:-110px;height:190px;background:#2563eb;transform:rotate(3deg);}
-.wave-3{bottom:-120px;height:180px;background:#1d4ed8;transform:rotate(-1deg);}
+/* WAVE */
+/* =========================================
+   WAVE
+   ========================================= */
 
+.bottom-wave {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 300px;
+
+    margin: 0;
+    padding: 0;
+
+    z-index: 1;
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.bottom-wave svg {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+}
+
+
+/* =========================================
+   WARNA
+   ========================================= */
+
+.wave-back {
+    fill: rgba(37, 99, 235, 0.58);
+}
+
+.wave-front {
+    fill: rgba(29, 78, 216, 0.72);
+}
+
+
+/* =========================================
+   GARIS
+   ========================================= */
+
+.wave-line {
+    fill: none;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* GARIS ATAS */
+
+.wave-line-1 {
+    stroke: rgba(96, 165, 250, 0.90);
+    stroke-width: 3;
+}
+
+
+/* GARIS BAWAH */
+
+.wave-line-2 {
+    stroke: rgba(147, 197, 253, 0.70);
+    stroke-width: 2;
+}
 /* ── TOMBOL KEMBALI (PANAH) ── */
 .back-btn{
   position:fixed;top:22px;left:22px;z-index:100;
@@ -255,12 +319,67 @@ body::before{
 <body>
 
 <!-- WAVE -->
-<div class="wave-container">
-  <div class="wave wave-1"></div>
-  <div class="wave wave-2"></div>
-  <div class="wave wave-3"></div>
-</div>
+<div class="bottom-wave">
 
+    <svg
+        viewBox="0 0 1000 300"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+
+        <!-- WAVE BELAKANG -->
+        <path
+            class="wave-back"
+            d="
+                M 0 40
+                L 400 160
+                L 600 160
+                L 1000 40
+                L 1000 300
+                L 0 300
+                Z
+            "
+        />
+
+        <!-- WAVE DEPAN -->
+<path
+    class="wave-front"
+    d="
+        M 0 70
+        L 400 190
+        L 600 190
+        L 1000 70
+        L 1000 300
+        L 0 300
+        Z
+    "
+/>
+
+        <!-- GARIS ATAS - MENEMPEL PERSIS -->
+<path
+    class="wave-line wave-line-1"
+    d="
+        M 0 40
+        L 400 160
+        L 600 160
+        L 1000 40
+    "
+/>
+
+        <!-- GARIS BAWAH - LEBIH RENDAH -->
+        <path
+            class="wave-line wave-line-2"
+            d="
+                M 0 70
+                L 400 190
+                L 600 190
+                L 1000 70
+            "
+        />
+
+    </svg>
+
+</div>
 <!-- TOMBOL KEMBALI (PANAH) -->
 <a href="{{ url('/') }}" class="back-btn" title="Kembali ke Dashboard">
   <svg viewBox="0 0 24 24" aria-hidden="true">
